@@ -3,22 +3,20 @@ package area
 import "testing"
 
 func TestArea(t *testing.T) {
-	t.Run("Area for Rectangle", func(t *testing.T) {
-		sq := Figure{12.0, 6.0}
-		area := sq.Area()
-		expected := 72.0
 
-		if area != expected {
-			t.Errorf("got '%.2f' but expected '%.2f'", area, expected)
+	checkArea := func(t *testing.T, shape Shape, want float64) {
+		t.Helper()
+		got := shape.Area()
+		if got != want {
+			t.Errorf("got %g want %g", got, want)
 		}
+	}
+	t.Run("Area for Rectangle", func(t *testing.T) {
+		rectangle := Rectangle{12.0, 6.0}
+		checkArea(t, rectangle, 72.0)
 	})
 	t.Run("Area for Circle", func(t *testing.T) {
-		circle := Circle{10}
-		circleArea := circle.Area()
-		expected := 314.1592653589793
-
-		if circleArea != expected {
-			t.Errorf("got %g but expected %g", circleArea, expected)
-		}
+		circle := Circle{10.0}
+		checkArea(t, circle, 314.1592653589793)
 	})
 }

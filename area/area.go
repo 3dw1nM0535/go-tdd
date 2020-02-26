@@ -2,12 +2,16 @@ package area
 
 import "math"
 
-type Figure struct {
+type Shape interface {
+	Area() float64
+}
+
+type Rectangle struct {
 	length float64
 	width  float64
 }
 
-func (r Figure) Area() float64 {
+func (r Rectangle) Area() float64 {
 	return r.length * r.width
 }
 
