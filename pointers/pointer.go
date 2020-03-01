@@ -2,6 +2,8 @@ package pointers
 
 import (
 	"fmt"
+
+	"errors"
 )
 
 type Bitcoin int
@@ -26,6 +28,12 @@ func (w *Wallet) Balance() Bitcoin {
 	return w.balance
 }
 
-func (w *Wallet) Widthraw(amount Bitcoin) {
+var ErrorInsufficientBalance = errors.New("Oh no! Insufficient balance in your account to initiate widthrawal")
+
+func (w *Wallet) Widthraw(amount Bitcoin) error {
+	if amount > w.balance {
+		return ErrorInsufficientBalance
+	}
 	w.balance -= amount
+	return nil
 }
