@@ -1,6 +1,8 @@
 package area
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestArea(t *testing.T) {
 
