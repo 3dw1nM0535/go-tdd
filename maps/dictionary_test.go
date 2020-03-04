@@ -4,6 +4,7 @@ import (
 	"testing"
 )
 
+// TestSearch for searching a key through a dictionary
 func TestSearch(t *testing.T) {
 	dict := Dictionary{"test": "this is a test"}
 
@@ -41,6 +42,7 @@ func TestSearch(t *testing.T) {
 	})
 }
 
+// Test cases for adding {key,value} to a dictionary
 func TestAdd(t *testing.T) {
 	dict := Dictionary{}
 	dict.Add("test", "this is an add test")
